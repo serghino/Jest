@@ -1,27 +1,44 @@
-# Jest
+# Angular testing using JEST
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
+1. Remove any reference to Jasmine / Karma in the package.json
+```
+npm remove @types/jasmine
+ jasmine-core karma karma-chrome-launcher karma-coverage karma-jasmine karma-jasmine-html-reporter
+```
 
-## Development server
+2. Install Jest
+```
+npm install --save-dev jest jest-preset-angular @types/jest
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+3. Create the ```setup-jest.ts``` in the root folder of the project and the content is as follows
+```setup-jest.ts
+import 'jest-preset-angular/setup-jest';
+```
 
-## Code scaffolding
+4. Add in the package.json, the Jest configuration
+```package.json
+"jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+      "<rootDir>/setup-jest.ts"
+    ],
+    "globalSetup": "jest-preset-angular/global-setup"
+  }
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+5. Configure JEST in tsconfig.json and tsconfig.spec.json
+```tsconfig.json
+"types": [
+  "jest"
+]
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+6. Configure the commands to run the tests in the package.json
+```package.json
+"test": "jest",
+"test:watch": "jest --watchAll",
+```
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+7. Remove karma.config.js and test.ts file
