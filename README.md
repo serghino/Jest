@@ -39,7 +39,7 @@ import 'jest-preset-angular/setup-jest';
 ```package.json
 "test": "jest",
 "test:watch": "jest --watchAll",
-"test:watch": "jest --coverage",
+"test:coverage": "jest --coverage",
 ```
 
 7. Remove karma.config.js and test.ts file
