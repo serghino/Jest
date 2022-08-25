@@ -43,6 +43,9 @@ import 'jest-preset-angular/setup-jest';
 ```
 
 7. Remove karma.config.js and test.ts file
+```
+rm karma.conf.js
+```
 
 8. Remove the test target inside the angular.json file.
 ```
