@@ -43,3 +43,25 @@ import 'jest-preset-angular/setup-jest';
 ```
 
 7. Remove karma.config.js and test.ts file
+
+8. Remove the test target inside the angular.json file.
+```
+"test": {
+  "builder": "@angular-devkit/build-angular:karma",
+  "options": {
+    "main": "src/test.ts",
+    "polyfills": "src/polyfills.ts",
+    "tsConfig": "tsconfig.spec.json",
+    "karmaConfig": "karma.conf.js",
+    "assets": [
+      "src/favicon.ico",
+      "src/assets"
+    ],
+    "styles": [
+      "src/styles.css"
+    ],
+    "scripts": []
+  }
+}
+```
+
